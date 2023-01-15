@@ -653,7 +653,6 @@ textarea {
 }
 
 .main-navigation ul {
-	display: none;
 	list-style: none;
 	margin: 0;
 	padding-left: 0;
@@ -966,4 +965,24 @@ textarea {
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 1.5em;
+}
+
+
+/* custom styline below for now */
+
+ul.ul_class li {
+	margin: 2px 6px;
+}
+
+.menu-block {
+	display: block;
+}
+.menu-hidden {
+	display: none;
+}
+
+@media screen and (min-width: 768px) {
+	.main-navigation {
+		width: auto;
+	}
 }
