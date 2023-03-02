@@ -65,8 +65,8 @@
                     <h3 class="text-2xl">Some Links</h3>
 						<?php wp_nav_menu(
 							array(
-								'theme_location' => 'footer-menu-2',
-								'menu_id'        => 'footer-menu-2',
+								'theme_location' => 'footer-menu-3',
+								'menu_id'        => 'footer-menu-3',
 								'container' => 'ul',
 								'menu_class' => 'footer-menu',
 							)
@@ -78,8 +78,8 @@
                     <h3 class="text-2xl">Some Links</h3>
 						<?php wp_nav_menu(
 							array(
-								'theme_location' => 'footer-menu-2',
-								'menu_id'        => 'footer-menu-2',
+								'theme_location' => 'footer-menu-4',
+								'menu_id'        => 'footer-menu-4',
 								'container' => 'ul',
 								'menu_class' => 'footer-menu',
 							)

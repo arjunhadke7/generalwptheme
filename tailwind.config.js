@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       'h1': 'font-size:26px;',
-      'h1': 'font-size:24px;',
+      
       screens: {
         // 'tabport': {'min': '768px', 'max': '991px'},
         // 'lg': {'min': '992px'},

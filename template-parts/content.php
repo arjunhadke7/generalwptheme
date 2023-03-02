@@ -9,7 +9,7 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article class="container mx-auto px-12 pt-6" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<?php
 		if ( is_singular() ) :
@@ -20,12 +20,14 @@
 
 		if ( 'post' === get_post_type() ) :
 			?>
+			<div class="border-2 border-gray-400 p-6 my-2">
 			<div class="entry-meta">
 				<?php
 				artr_posted_on();
 				artr_posted_by();
 				?>
 			</div><!-- .entry-meta -->
+			</div>
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 

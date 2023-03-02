@@ -53,6 +53,7 @@ function artr_setup() {
 			'footer-menu-1' => esc_html__( 'Footer One', 'artr' ),
 			'footer-menu-2' => esc_html__( 'Footer Two', 'artr' ),
 			'footer-menu-3' => esc_html__( 'Footer Three', 'artr' ),
+			'footer-menu-4' => esc_html__( 'Footer Four', 'artr' ),
 		)
 	);
 
