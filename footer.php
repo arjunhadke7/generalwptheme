@@ -20,14 +20,14 @@
 				<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'artr' ) ); ?>">
 					<?php
 					/* translators: %s: CMS name, i.e. WordPress. */
-					printf( esc_html__( 'Proudly powered by %s', 'artr' ), 'WordPress' );
+					printf( esc_html__( 'Design by %s', 'artr' ), 'Artronn' );
 					?>
 				</a>
-				<span class="sep"> | </span>
-					<?php
+				<!-- <span class="sep"> | </span> -->
+					<!-- <?php
 					/* translators: 1: Theme name, 2: Theme author. */
 					printf( esc_html__( 'Theme: %1$s by %2$s.', 'artr' ), 'artr', '<a href="http://underscores.me/">Underscores.me</a>' );
-					?>
+					?> -->
 			</div><!-- .site-info -->
 
 			<!-- below is working area for now -->

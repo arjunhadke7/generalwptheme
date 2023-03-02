@@ -23,7 +23,7 @@ get_header();
 			if ( is_home() && ! is_front_page() ) :
 				?>
 				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+					<!-- <h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1> -->
 				</header>
 				<?php
 			endif;
@@ -37,7 +37,14 @@ get_header();
 				 * If you want to override this in a child theme, then include a file
 				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
 				 */
-				get_template_part( 'template-parts/content', get_post_type() );
+                // uncomment below line later
+				// get_template_part( 'template-parts/content', get_post_type() );
+                // uncomment above line later
+                ?> <a class="hover:text-red-300" href=" <?php the_permalink() ?>  "> <h1 class="text-6xl"> <?php the_title(); ?> </a> </h1>
+
+                <p class="text-gray-800"> <?php the_excerpt(); ?> </p>
+                <?php
+                
 
 			endwhile;
 
