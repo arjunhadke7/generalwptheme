@@ -209,7 +209,7 @@ function custom_get_post_by_slug( $request ) {
         'posts_per_page' => 1,
     ) );
     if ( empty( $posts ) ) {
-        return new WP_Error( 'no_post_found', 'No post found with the specified slug', array( 'status' => 404 ) );
+        return new WP_Error( 'no_post_found', 'No post found with the slug you have passed. Please try with a valid slug.', array( 'status' => 404 ) );
     }
     $post = $posts[0];
     $response = array(
