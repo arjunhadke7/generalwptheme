@@ -191,105 +191,8 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  * Adding custom rest api methods below
  */
 
-//  // adding field to existing api of the author name, not the id to get the name directly
-//  function custom_post_request() {
-// 	register_rest_field('post', 'authorName', array(
-// 		'get_callback' => function() {
-// 			return get_the_author();
-// 		},
-// 	));
-//  }
-
-//  add_action('rest_api_init', 'custom_post_request');
-
-
-// // custom route
-// function adding_more() {
-// 	// $slugSearch = ;
-
-// 	// $args = [
-//     //     'name' => $slug['slug'],
-//     //     'post_type' => 'post'
-//     // ];
-
-//     // $post = get_posts($args);
-// 	register_rest_route('site', 'posts', array(
-// 		'methods' => 'GET',
-// 		'callback' => 'bySlug'
-// 	));
-// }
-
-// // step 1 get the slug from normal get req 
-// // step 2 add slug to the variable
-// // step 3 return post title and content based on slug.
-
-// function bySlug() {
-// 	$someData = new WP_Query(array(
-// 		'post_tyoe' => 'post'
-// 	));
-
-// 	$someDataResults = array();
-
-
-// 	while($someData->have_posts()) {
-// 		$someData->the_post();
-// 		array_push($someDataResults, array(
-// 			'title' => get_the_title(),
-// 			// 'content' => get_the_content(),
-//             // 'authorName' => get_the_author(),
-// 		));
-// 	}
-
-// 	return $someDataResults;
-// }
-
-
-//  add_action('rest_api_init', 'adding_more');
-
-
-
-
-// function custom_get_post_slug() {
-//     if ( isset( $_GET['post_slug'] ) ) {
-//         return sanitize_text_field( $_GET['post_slug'] );
-//     } else {
-//         return null;
-//     }
-// }
-
-// function custom_rest_api_init() {
-//     $post_slug = 'hello-world';
-//     if ( $post_slug ) {
-//         register_rest_route( 'custom/v1', '/post-by-slug/' . $post_slug, array(
-//             'methods' => 'GET',
-//             'callback' => 'custom_get_post_by_slug',
-//         ) );
-//     }
-// }
-// add_action( 'rest_api_init', 'custom_rest_api_init' );
-
-// function custom_get_post_by_slug( $request ) {
-//     $slug = $request->get_param( 'slug' );
-//     $posts = get_posts( array(
-//         'name' => $slug,
-//         'post_type' => 'post',
-//         'post_status' => 'publish',
-//         'posts_per_page' => 1,
-//     ) );
-//     if ( empty( $posts ) ) {
-//         return new WP_Error( 'no_post_found', 'No post found with the specified slug', array( 'status' => 404 ) );
-//     }
-//     $post = $posts[0];
-//     $response = array(
-//         'title' => get_the_title( $post->ID ),
-//         'content' => get_the_content( null, false, $post->ID ),
-//     );
-//     return rest_ensure_response( $response );
-// }
-
-
 function custom_rest_api_init() {
-    register_rest_route( 'custom/v1', '/post-by-slug/(?P<slug>[a-zA-Z0-9-]+)', array(
+    register_rest_route( 'site', '/(?P<slug>[a-zA-Z0-9-]+)', array(
         'methods' => 'GET',
         'callback' => 'custom_get_post_by_slug',
     ) );
@@ -312,6 +215,7 @@ function custom_get_post_by_slug( $request ) {
     $response = array(
         'title' => get_the_title( $post->ID ),
         'content' => get_the_content( null, false, $post->ID ),
+		'slug' => $slug
     );
     return rest_ensure_response( $response );
 }
