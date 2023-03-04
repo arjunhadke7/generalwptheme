@@ -15,11 +15,11 @@ get_header();
 		<?php
 		while ( have_posts() ) :
 			the_post();
-			?> <h1 class="text-6xl"> <?php the_title(); ?> </h1> 
-
+			?> <h1 class="text-5xl mb-6"> <?php the_title(); ?> </h1> 
 			<div class="single-post-content">
-			<?php the_content();?>
+				<?php the_content();?>
 			</div>
+			<p><?php the_field('song') ?></p>
 
 			<?php
 
@@ -27,8 +27,15 @@ get_header();
 			
 			// get_template_part( 'template-parts/content', get_post_type() );
 
-			previous_post_link();
-			next_post_link();
+			
+			
+
+			?>
+			<div class="container flex justify-between border-[1px] my-4 px-2 py-6 border-gray-200">
+				<div class="mx-6"> <?php previous_post_link(); ?> </div>
+				<div class="mx-6"> <?php next_post_link(); ?> </div>
+			</div>
+			<?php
 
 			// the_post_navigation(
 			// 	array(
