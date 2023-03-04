@@ -981,6 +981,10 @@ ul.ul_class li {
 	display: none;
 }
 
+.single-post-content p, .page-content p {
+	margin-bottom: 10px;
+}
+
 @media screen and (min-width: 768px) {
 	.main-navigation {
 		width: auto;

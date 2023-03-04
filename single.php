@@ -15,22 +15,27 @@ get_header();
 		<?php
 		while ( have_posts() ) :
 			the_post();
-			?> <h1 class="text-6xl"> <?php the_title(); ?> </h1> <?php
+			?> <h1 class="text-6xl"> <?php the_title(); ?> </h1> 
+
+			<div class="single-post-content">
+			<?php the_content();?>
+			</div>
+
+			<?php
 
 			
-
-			the_content();
 			
 			// get_template_part( 'template-parts/content', get_post_type() );
 
+			previous_post_link();
+			next_post_link();
 
-			
-			the_post_navigation(
-				array(
-					'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'artr' ) . '</span> <span class="nav-title">%title</span>',
-					'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'artr' ) . '</span> <span class="nav-title">%title</span>',
-				)
-			);
+			// the_post_navigation(
+			// 	array(
+			// 		'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'artr' ) . '</span> <span class="nav-title">%title</span>',
+			// 		'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'artr' ) . '</span> <span class="nav-title">%title</span>',
+			// 	)
+			// );
 
 			
 
