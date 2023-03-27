@@ -191,31 +191,72 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  * Adding custom rest api methods below
  */
 
-function custom_rest_api_init() {
-    register_rest_route( 'site', '/(?P<slug>[a-zA-Z0-9-]+)', array(
-        'methods' => 'GET',
-        'callback' => 'custom_get_post_by_slug',
-    ) );
-}
+// REST API get post data in JSON just by passing the slug
 
-add_action( 'rest_api_init', 'custom_rest_api_init' );
+// function custom_rest_api_init() {
+//     register_rest_route( 'site', '/(?P<slug>[a-zA-Z0-9-]+)', array(
+//         'methods' => 'GET',
+//         'callback' => 'custom_get_post_by_slug',
+//     ) );
+// }
 
-function custom_get_post_by_slug( $request ) {
-    $slug = $request->get_param( 'slug' );
-    $posts = get_posts( array(
-        'name' => $slug,
-        'post_type' => 'post',
-        'post_status' => 'publish',
-        'posts_per_page' => 1,
-    ) );
-    if ( empty( $posts ) ) {
-        return new WP_Error( 'no_post_found', 'No post found with the slug you have passed. Please try with a valid slug.', array( 'status' => 404 ) );
-    }
-    $post = $posts[0];
-    $response = array(
-        'title' => get_the_title( $post->ID ),
-        'content' => get_the_content( null, false, $post->ID ),
-		'slug' => $slug
-    );
-    return rest_ensure_response( $response );
-}
+// add_action( 'rest_api_init', 'custom_rest_api_init' );
+
+// function custom_get_post_by_slug( $request ) {
+//     $slug = $request->get_param( 'slug' );
+//     $posts = get_posts( array(
+//         'name' => $slug,
+//         'post_type' => 'post',
+//         'post_status' => 'publish',
+//         'posts_per_page' => 1,
+//     ) );
+//     if ( empty( $posts ) ) {
+//         return new WP_Error( 'no_post_found', 'No post found with the slug you have passed. Please try with a valid slug.', array( 'status' => 404 ) );
+//     }
+//     $post = $posts[0];
+//     $response = array(
+//         'title' => get_the_title( $post->ID ),
+//         'content' => get_the_content( null, false, $post->ID ),
+// 		'slug' => $slug
+//     );
+//     return rest_ensure_response( $response );
+// }
+
+// END OF CUSTOM HOOK  to get slug by passing only the slug
+
+
+
+// ACF get JSON in REST API
+
+
+// custom code to get acf fields in rest api, might not need acf pro but tested with acf pro from github since we needed the image gallery field which is only available in acf pro, rest api was not supported since it could have been an older version of the plugin on github
+
+// function acf_rest_api_get_fields( $data, $post, $context ) {
+//     $data->data['acf'] = get_fields( $post->ID );
+//     return $data;
+// }
+// add_filter( 'rest_prepare_post', 'acf_rest_api_get_fields', 10, 3 );
+
+
+// Add ACF fields to REST API response
+// function custom_rest_api_acf() {
+//     register_rest_field( 'post',
+//         'acf',
+//         array(
+//             'get_callback'    => 'get_rest_api_acf',
+//             'update_callback' => null,
+//             'schema'          => null,
+//         )
+//     );
+// }
+// add_action( 'rest_api_init', 'custom_rest_api_acf' );
+
+// // Get ACF fields for REST API response
+// function get_rest_api_acf( $object, $field_name, $request ) {
+//     $post_id = $object['id'];
+//     $acf = get_fields( $post_id );
+//     return $acf;
+// }
+
+
+// END OF HOOK  to get the data in REST API
